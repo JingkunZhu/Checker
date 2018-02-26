@@ -18,6 +18,7 @@ public class Piece1 extends Piece implements NewPositionValid {
 							(oldPosition.getY() + newPosition.getY()) / 2);
 					return true;
 				}
+				else return false;
 			}
 			System.out.println("Wrong position...");
 			return false;
@@ -36,8 +37,7 @@ public class Piece1 extends Piece implements NewPositionValid {
 					|| ((new Position((newPosition.getX() + 1), (newPosition.getY() - 1)).isOnBoard())
 							&& (new Position((newPosition.getX() + 2), (newPosition.getY() - 2)).isOnBoard())
 							&& (board.getPiece(new Position((newPosition.getX() + 1), (newPosition.getY() - 1))) == 2)
-							&& (board.getPiece(
-									new Position((newPosition.getX() + 2), (newPosition.getY() - 2))) == 0)))) {
+							&& (board.getPiece(new Position((newPosition.getX() + 2), (newPosition.getY() - 2))) == 0)))) {
 				return true;
 			}
 		}

@@ -2,6 +2,7 @@ package Checker;
 
 public class Player {
 	private int player;
+	public int flag = 0;//used for unitTesting
 
 	public Player(int i) {
 		if (i == 1) {
@@ -18,8 +19,10 @@ public class Player {
 	public void nextPlayer() { // 转换玩家，即玩家1结束后玩家2操作，在主函数循环的最后执行
 		if (player == 1) {
 			player = 2;
+			flag = 2;
 		} else {
 			player = 1;
+			flag = 1;
 		}
 	}
 }

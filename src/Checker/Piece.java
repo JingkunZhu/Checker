@@ -1,26 +1,32 @@
 package Checker;
 
 public class Piece {
-	protected Position oldPosition;
-	protected Position newPosition;
+	public Position oldPosition;
+	public Position newPosition;
 	protected Board board;
 	protected Player player;
+	
+	public int flag;//used for unitTesting
 
-	protected int diffX() {
+	public int diffX() {
 		return newPosition.getX() - oldPosition.getX();
 	}
 
-	protected int diffY() {
+	public int diffY() {
 		return newPosition.getY() - oldPosition.getY();
 	}
 
 	public Piece(Board b, Player p) {
 		this.board = b;
 		this.player = p;
+		flag = 0;
+		return;
 	}
 
 	public void selectOldPosition(Position oldPosition) {
 		this.oldPosition = oldPosition;
+		flag = -1;
+		return;
 	}
 
 	public boolean isValidOldPosition(Board b, Position p) {
@@ -84,5 +90,7 @@ public class Piece {
 
 	public void selectNewPosition(Position newPosition) {
 		this.newPosition = newPosition;
+		flag = -2;
+		return;
 	}
 }

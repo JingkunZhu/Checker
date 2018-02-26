@@ -36,8 +36,7 @@ public class Piece2 extends Piece implements NewPositionValid {
 					|| ((new Position((newPosition.getX() - 1), (newPosition.getY() + 1)).isOnBoard())
 							&& (new Position((newPosition.getX() - 2), (newPosition.getY() + 2)).isOnBoard())
 							&& (board.getPiece(new Position((newPosition.getX() - 1), (newPosition.getY() + 1))) == 1)
-							&& (board.getPiece(
-									new Position((newPosition.getX() - 2), (newPosition.getY() + 2))) == 0)))) {
+							&& (board.getPiece(new Position((newPosition.getX() - 2), (newPosition.getY() + 2))) == 0)))) {
 				return true;
 			}
 		}

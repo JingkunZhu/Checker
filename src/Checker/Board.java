@@ -1,7 +1,8 @@
 package Checker;
 
 public class Board {
-	private int[][] board;
+	public int[][] board;
+	public int flag;
 
 	public Board(int[][] board) {
 		this.board = board;
@@ -21,27 +22,40 @@ public class Board {
 	public void updatedBoard(Position oldPosition, Position newPosition, Player player) { // 更新棋盘，将久位置变0，新位置变成棋子对应数字
 		if (this.board[oldPosition.getX()][oldPosition.getY()] == -1) {
 			this.board[newPosition.getX()][newPosition.getY()] = -1;
+			flag = -1;
+		
 		} else if (this.board[oldPosition.getX()][oldPosition.getY()] == -2) {
 			this.board[newPosition.getX()][newPosition.getY()] = -2;
+			flag = -2;
+		
 		} else {
 			this.board[newPosition.getX()][newPosition.getY()] = player.getPlayer();
+			flag = 1;
+		
 		}
 		this.board[oldPosition.getX()][oldPosition.getY()] = 0;
+
+		
 
 		for (int j = 0; j <= 7; j++) { // 每次循环边界查看是否有王出现
 			if (board[0][j] == 2) {
 				board[0][j] = -2;
+				flag = 12;
 			}
 		}
 		for (int j = 0; j <= 7; j++) {
 			if (board[7][j] == 1) {
 				board[7][j] = -1;
+				flag = 21;
 			}
 		}
+		return;
 	}
 
 	public void removePiece(int x, int y) { // 跳棋后删除跳过的棋子
 		this.board[x][y] = 0;
+		flag = 0;
+		return;
 	}
 
 	public void printBoard() { // 打印棋盘
@@ -62,5 +76,7 @@ public class Board {
 		}
 		System.out.print("   +----------------+ \n");
 		System.out.println("    0 1 2 3 4 5 6 7   \n");
+		flag = 5;
+		return;
 	}
 }
